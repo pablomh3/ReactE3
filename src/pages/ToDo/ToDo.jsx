@@ -5,7 +5,7 @@ import { addTarea, resetTareas, deleteTarea } from '../../components/Redux/reduc
 import { BsTrash3 } from 'react-icons/bs';
 
 const ToDo = () => {
-  const { toDoList, show } = useSelector(state =>({toDoList: state.todos.toDoList,}))
+  const { toDoList } = useSelector(state =>({toDoList: state.todos.toDoList,}))
   const dispatch = useDispatch()
   const [valor, setValor] = useState('')
 
