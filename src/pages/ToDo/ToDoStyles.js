@@ -45,7 +45,7 @@ export const ButtonReset = styled.button `
     font-size: 16px;
 `
 export const ToDoUl = styled.ul `
-    background-color: grey;
+    
     display: flex;
     margin: 20px auto;
     align-items: center;
@@ -55,17 +55,18 @@ export const ToDoUl = styled.ul `
     flex-direction: column;
     gap: 20px;
 `
-export const tareaLi = styled.li `
+export const TareaLi = styled.li `
         background-color: #010329;
         border-radius: 20px;
         padding: 10px 15px;
-        color: black;
+        color: white;
         font-size: 16px;
         font-weight: 700;
         width: 300px;
         align-items: center;
         display: flex;
-        
+        justify-content:center;
+        gap: 30px;
         
     div{
         color: white;

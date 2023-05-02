@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { ButtonAdd, ButtonReset, ContainerStyled, InputContainer, ToDoUl, tareaLi } from './ToDoStyles';
+import { ButtonAdd, ButtonReset, ContainerStyled, InputContainer, ToDoUl, TareaLi } from './ToDoStyles';
 import { useDispatch, useSelector } from 'react-redux'
 import { addTarea, resetTareas, deleteTarea } from '../../components/Redux/reducers/tareasSlice';
 import { BsTrash3 } from 'react-icons/bs';
 
 const ToDo = () => {
-  const { toDoList, show } = useSelector(state =>({toDoList: state.todo.toDoList,}))
+  const { toDoList, show } = useSelector(state =>({toDoList: state.todos.toDoList,}))
   const dispatch = useDispatch()
   const [valor, setValor] = useState('')
 
@@ -31,13 +31,12 @@ const ToDo = () => {
 
   
 const HandleReset =() =>{
-dispatch(show(false));
+dispatch(resetTareas());
+
 }
 
 const HandleDelete = e => {
-  if (!e.target.class.color('white')) return;
-
-  const id = parseInt(e.target.dataset.id);
+ const id = parseInt(e.target.dataset.id);
   dispatch(deleteTarea({ id: id }))
 }
 
@@ -53,16 +52,17 @@ const HandleDelete = e => {
             onChange={HandleChange}
             value={valor}
           />
-          <ButtonAdd type="submit" title='Agregar'/>
+          <ButtonAdd type='submit' onClick={HandleSubmit}> Agregar</ButtonAdd>
           
-          <ButtonReset type="button" onClick={HandleReset} title='Reset' />
+          <ButtonReset type="submit" onClick={HandleReset}> Reset</ButtonReset>
         </InputContainer> 
         <ToDoUl> 
           { toDoList.map((tarea) => (
-          <tareaLi key={tarea.id} >
+          <TareaLi key={tarea.id} >
             {tarea.tarea}
-            <BsTrash3 color="white" onClick={() => HandleDelete()} />
-          </tareaLi>
+            <BsTrash3 color="white" data-id={tarea.id} onClick={(e) => HandleDelete(e)} />
+
+          </TareaLi>
           ))}
         </ToDoUl>
       </ContainerStyled>

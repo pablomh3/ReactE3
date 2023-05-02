@@ -2,7 +2,6 @@
 
 const initialState ={
   toDoList: [],
-  show: true,
 }
   export const todoSlice = createSlice({
     name: 'todo',
